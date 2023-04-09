@@ -26,11 +26,14 @@ import Gift from "@/components/sections/Gift";
 import Carosel from "@/components/sections/Carosel";
 import { withApollo } from "@/lib/withApollo";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
 function Home() {
   const [isOpen, setIsOpen] = useState(true);
+  const router = useRouter();
+  const { name } = router.query;
 
   const handleClose = () => setIsOpen(false);
   return (
@@ -67,7 +70,20 @@ function Home() {
                   />
                 </Box>
                 <Text py="10">Kepada YTH.</Text>
-                <Text fontSize="2xl">Nama Undangan</Text>
+                <Text fontSize="2xl">{name}</Text>
+                <Button
+                  mt="5"
+                  bg="#6e5d57"
+                  color="white"
+                  _hover={{
+                    bg: "#CEA091",
+                  }}
+                  fontWeight={500}
+                  fontFamily="Philosopher"
+                  onClick={handleClose}
+                >
+                  Buka Undangan
+                </Button>
               </Box>
             </ModalBody>
           </ModalContent>
