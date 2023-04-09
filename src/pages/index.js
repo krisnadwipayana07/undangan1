@@ -36,7 +36,7 @@ function Home() {
   return (
     <>
       <Head>
-        <title>Yogi & Diwani - Kondangan</title>
+        <title>Wah Ogik & Diwani - Kondangan</title>
         <meta name="description" content="Website dibuat oleh Kondangan" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -119,7 +119,7 @@ function Home() {
                   fontSize="3xl"
                   textAlign="center"
                 >
-                  Yogi & Diwani
+                  Wah Ogik & Diwani
                 </Text>
               </Box>
             </Box>
@@ -242,7 +242,7 @@ function Home() {
                   py="7"
                 >
                   <Box w="50%">
-                    <Text>SENIN</Text>
+                    <Text>RABU</Text>
                     <Text fontSize="1.7em">April</Text>
                     <Text fontSize="2em">26</Text>
                     <Text fontSize="1.7em">2023</Text>

@@ -116,7 +116,7 @@ export default function Ucapan() {
         </Button>
       </Stack>
       {loading && <Text>loading...</Text>}
-      <Box height="70vh" overflow="scroll">
+      <Box height="70vh" overflowY="scroll">
         {data?.yogidiwani_ucapan_doa?.map((item, key) => (
           <Box
             my="5"
