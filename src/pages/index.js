@@ -68,6 +68,19 @@ function Home() {
                 </Box>
                 <Text py="10">Kepada YTH.</Text>
                 <Text fontSize="2xl">Nama Undangan</Text>
+                <Button
+                  mt="5"
+                  bg="#6e5d57"
+                  color="white"
+                  _hover={{
+                    bg: "#CEA091",
+                  }}
+                  fontWeight={500}
+                  fontFamily="Philosopher"
+                  onClick={handleClose}
+                >
+                  Buka Undangan
+                </Button>
               </Box>
             </ModalBody>
           </ModalContent>
