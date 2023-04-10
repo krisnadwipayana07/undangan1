@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <Box bgColor="#F6F1E9" p="10" textAlign="center">
       <Text fontFamily="Philosopher">Made by </Text>
-      <Text fontFamily="Great Vibes" fontSize="7xl">
+      <Text fontFamily="Great Vibes" fontSize="5xl">
         Krisna Dwipayana
       </Text>
       <Box>

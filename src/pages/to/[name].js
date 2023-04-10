@@ -27,6 +27,7 @@ import Carosel from "@/components/sections/Carosel";
 import { withApollo } from "@/lib/withApollo";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Kartu from "@/components/sections/Kartu";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,55 +40,19 @@ function Home() {
   return (
     <>
       <Head>
-        <title>Yogi & Diwani - Kondangan</title>
+        <title>Wah Ogik & Diwani - Kondangan</title>
         <meta name="description" content="Website dibuat oleh Kondangan" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Modal isOpen={isOpen} onClose={handleClose}>
-          <ModalOverlay />
-          <ModalContent
-            bgImage="linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,253,236,0.8) 0%) , url('/assets/header.webp')"
-            bgSize="cover"
-            bgPos="center"
-            h="80vh"
-            textAlign="center"
-            fontFamily="Philosopher"
-          >
-            <ModalBody
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Box>
-                <Box display="flex" justifyContent="center" mb="20">
-                  <Image
-                    src="/assets/logo.png"
-                    alt="logo"
-                    width={100}
-                    height={100}
-                  />
-                </Box>
-                <Text py="10">Kepada YTH.</Text>
-                <Text fontSize="2xl">{name}</Text>
-                <Button
-                  mt="5"
-                  bg="#6e5d57"
-                  color="white"
-                  _hover={{
-                    bg: "#CEA091",
-                  }}
-                  fontWeight={500}
-                  fontFamily="Philosopher"
-                  onClick={handleClose}
-                >
-                  Buka Undangan
-                </Button>
-              </Box>
-            </ModalBody>
-          </ModalContent>
-        </Modal>
+        {/* <Button onClick={toggle}>{playing ? "PLAY" : "NO"} </Button> */}
+        <Kartu
+          handleClose={handleClose}
+          isOpen={isOpen}
+          namaUndangan={name}
+          key={1}
+        />
         <Box bgColor="black" minH="100vh">
           <Container maxW="container.sm" bgColor="white" px="0" minH="100vh">
             <Box pos="relative" maxW="container.md" minH="100vh">
@@ -122,7 +87,7 @@ function Home() {
                   fontSize="3xl"
                   textAlign="center"
                 >
-                  Yogi & Diwani
+                  Wah Ogik & Diwani
                 </Text>
               </Box>
             </Box>
@@ -245,7 +210,7 @@ function Home() {
                   py="7"
                 >
                   <Box w="50%">
-                    <Text>SENIN</Text>
+                    <Text>RABU</Text>
                     <Text fontSize="1.7em">April</Text>
                     <Text fontSize="2em">26</Text>
                     <Text fontSize="1.7em">2023</Text>

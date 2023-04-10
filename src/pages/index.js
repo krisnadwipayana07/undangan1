@@ -25,14 +25,28 @@ import Ucapan from "@/components/sections/Ucapan";
 import Gift from "@/components/sections/Gift";
 import Carosel from "@/components/sections/Carosel";
 import { withApollo } from "@/lib/withApollo";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Kartu from "@/components/sections/Kartu";
 
 const inter = Inter({ subsets: ["latin"] });
 
 function Home() {
-  const [isOpen, setIsOpen] = useState(true);
+  const name = "Nama Undangan";
 
-  const handleClose = () => setIsOpen(false);
+  const [isOpen, setIsOpen] = useState(true);
+  // // const audio = useRef(new Audio("/assets/lagu.mp3"));
+  // const [playing, setPlaying] = useState(false);
+
+  // useEffect(() => {
+  //   playing ? audio.current?.play() : audio.current?.pause();
+  // }, [playing]);
+
+  // const toggle = () => setPlaying(!playing);
+  const handleClose = () => {
+    setIsOpen(false);
+    toggle();
+  };
+
   return (
     <>
       <Head>
@@ -42,49 +56,13 @@ function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Modal isOpen={isOpen} onClose={handleClose}>
-          <ModalOverlay />
-          <ModalContent
-            bgImage="linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,253,236,0.8) 0%) , url('/assets/header.webp')"
-            bgSize="cover"
-            bgPos="center"
-            h="80vh"
-            textAlign="center"
-            fontFamily="Philosopher"
-          >
-            <ModalBody
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Box>
-                <Box display="flex" justifyContent="center" mb="20">
-                  <Image
-                    src="/assets/logo.png"
-                    alt="logo"
-                    width={100}
-                    height={100}
-                  />
-                </Box>
-                <Text py="10">Kepada YTH.</Text>
-                <Text fontSize="2xl">Nama Undangan</Text>
-                <Button
-                  mt="5"
-                  bg="#6e5d57"
-                  color="white"
-                  _hover={{
-                    bg: "#CEA091",
-                  }}
-                  fontWeight={500}
-                  fontFamily="Philosopher"
-                  onClick={handleClose}
-                >
-                  Buka Undangan
-                </Button>
-              </Box>
-            </ModalBody>
-          </ModalContent>
-        </Modal>
+        {/* <Button onClick={toggle}>{playing ? "PLAY" : "NO"} </Button> */}
+        <Kartu
+          handleClose={handleClose}
+          isOpen={isOpen}
+          namaUndangan={name}
+          key={1}
+        />
         <Box bgColor="black" minH="100vh">
           <Container maxW="container.sm" bgColor="white" px="0" minH="100vh">
             <Box pos="relative" maxW="container.md" minH="100vh">
