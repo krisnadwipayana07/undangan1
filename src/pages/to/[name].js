@@ -20,23 +20,53 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import Footer from "@/components/footer";
-import { AiOutlineInstagram } from "react-icons/ai";
 import Ucapan from "@/components/sections/Ucapan";
+import { AiOutlineInstagram } from "react-icons/ai";
+import { BsMusicNote } from "react-icons/bs";
 import Gift from "@/components/sections/Gift";
 import Carosel from "@/components/sections/Carosel";
 import { withApollo } from "@/lib/withApollo";
-import { useState } from "react";
-import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from "react";
 import Kartu from "@/components/sections/Kartu";
+import useSound from "use-sound";
+import { Howl } from "howler";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
 function Home() {
-  const [isOpen, setIsOpen] = useState(true);
   const router = useRouter();
   const { name } = router.query;
 
-  const handleClose = () => setIsOpen(false);
+  const [isOpen, setIsOpen] = useState(true);
+  const [playing, setPlaying] = useState(false);
+  const [audio, setAudio] = useState(null);
+
+  useEffect(() => {
+    if (!audio) {
+      const temp = new Howl({
+        src: ["/assets/lagu.mp3"],
+        loop: true,
+      });
+      setAudio(temp);
+    }
+  }, []);
+
+  const handleButtonMusic = () => {
+    if (playing) {
+      audio.stop();
+      setPlaying(false);
+    } else {
+      audio.play();
+      setPlaying(true);
+    }
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    audio.play();
+    setPlaying(true);
+  };
   return (
     <>
       <Head>
@@ -46,7 +76,6 @@ function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        {/* <Button onClick={toggle}>{playing ? "PLAY" : "NO"} </Button> */}
         <Kartu
           handleClose={handleClose}
           isOpen={isOpen}
@@ -55,6 +84,15 @@ function Home() {
         />
         <Box bgColor="black" minH="100vh">
           <Container maxW="container.sm" bgColor="white" px="0" minH="100vh">
+            <Box pos="fixed" right="10px" bottom="10px" zIndex="999">
+              <IconButton
+                colorScheme="yellow"
+                borderRadius="100px"
+                onClick={handleButtonMusic}
+              >
+                <BsMusicNote size={20} />
+              </IconButton>
+            </Box>
             <Box pos="relative" maxW="container.md" minH="100vh">
               <Image
                 src="/assets/header.webp"

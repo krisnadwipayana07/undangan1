@@ -20,13 +20,16 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import Footer from "@/components/footer";
-import { AiOutlineInstagram } from "react-icons/ai";
 import Ucapan from "@/components/sections/Ucapan";
+import { AiOutlineInstagram } from "react-icons/ai";
+import { BsMusicNote } from "react-icons/bs";
 import Gift from "@/components/sections/Gift";
 import Carosel from "@/components/sections/Carosel";
 import { withApollo } from "@/lib/withApollo";
 import { useEffect, useRef, useState } from "react";
 import Kartu from "@/components/sections/Kartu";
+import useSound from "use-sound";
+import { Howl } from "howler";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,19 +37,34 @@ function Home() {
   const name = "Nama Undangan";
 
   const [isOpen, setIsOpen] = useState(true);
-  // // const audio = useRef(new Audio("/assets/lagu.mp3"));
-  // const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(false);
+  const [audio, setAudio] = useState(null);
 
-  // useEffect(() => {
-  //   playing ? audio.current?.play() : audio.current?.pause();
-  // }, [playing]);
+  useEffect(() => {
+    if (!audio) {
+      const temp = new Howl({
+        src: ["/assets/lagu.mp3"],
+        loop: true,
+      });
+      setAudio(temp);
+    }
+  }, []);
 
-  // const toggle = () => setPlaying(!playing);
-  const handleClose = () => {
-    setIsOpen(false);
-    toggle();
+  const handleButtonMusic = () => {
+    if (playing) {
+      audio.stop();
+      setPlaying(false);
+    } else {
+      audio.play();
+      setPlaying(true);
+    }
   };
 
+  const handleClose = () => {
+    setIsOpen(false);
+    audio.play();
+    setPlaying(true);
+  };
   return (
     <>
       <Head>
@@ -56,7 +74,6 @@ function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        {/* <Button onClick={toggle}>{playing ? "PLAY" : "NO"} </Button> */}
         <Kartu
           handleClose={handleClose}
           isOpen={isOpen}
@@ -65,6 +82,15 @@ function Home() {
         />
         <Box bgColor="black" minH="100vh">
           <Container maxW="container.sm" bgColor="white" px="0" minH="100vh">
+            <Box pos="fixed" right="10px" bottom="10px" zIndex="999">
+              <IconButton
+                colorScheme="yellow"
+                borderRadius="100px"
+                onClick={handleButtonMusic}
+              >
+                <BsMusicNote size={20} />
+              </IconButton>
+            </Box>
             <Box pos="relative" maxW="container.md" minH="100vh">
               <Image
                 src="/assets/header.webp"
