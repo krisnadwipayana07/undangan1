@@ -32,7 +32,7 @@ export default function App() {
           loop={true}
           navigation={true}
           autoplay={{
-            delay: 3000,
+            delay: 2000,
             disableOnInteraction: false,
           }}
           modules={[Autoplay, Pagination, Navigation]}
@@ -41,7 +41,7 @@ export default function App() {
           {list.map((item, key) => (
             <SwiperSlide key={key}>
               <Image
-                src={"/assets/landscape/" + item + ".jpg"}
+                src={"/assets/landscape/" + item + ".webp"}
                 alt={"image " + item}
                 width={1000}
                 height={1000}
@@ -68,7 +68,7 @@ export default function App() {
           {list.map((item, key) => (
             <SwiperSlide key={key}>
               <Image
-                src={"/assets/potrait/" + item + ".jpg"}
+                src={"/assets/potrait/" + item + ".webp"}
                 alt={"image " + item}
                 width={1000}
                 height={1000}
