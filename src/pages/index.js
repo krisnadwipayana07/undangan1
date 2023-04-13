@@ -42,11 +42,13 @@ function Home() {
 
   useEffect(() => {
     setAudio(new Audio("/assets/lagu_compress.mp3"));
+    setPlaying(true);
   }, []);
 
   const handleButtonMusic = () => {
+    const temp = new Audio("");
     if (playing) {
-      audio.stop();
+      audio.pause();
       setPlaying(false);
     } else {
       audio.play();
