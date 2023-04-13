@@ -41,7 +41,7 @@ function Home() {
   const [audio, setAudio] = useState(null);
 
   useEffect(() => {
-    setAudio(new Audio("/assets/lagu.mp3"));
+    setAudio(new Audio("/assets/lagu_compress.mp3"));
   }, []);
 
   const handleButtonMusic = () => {
