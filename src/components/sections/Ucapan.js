@@ -13,10 +13,10 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 
-export default function Ucapan() {
+export default function Ucapan({ name = "" }) {
   const { loading, error, data } = useQuery(GET_MY_UCAPAN);
   const [input, setInput] = useState({
-    name: "",
+    name: name,
     message: "",
     avaliable: "",
   });

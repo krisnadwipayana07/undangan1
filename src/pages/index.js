@@ -41,13 +41,7 @@ function Home() {
   const [audio, setAudio] = useState(null);
 
   useEffect(() => {
-    if (!audio) {
-      const temp = new Howl({
-        src: ["/assets/lagu.mp3"],
-        loop: true,
-      });
-      setAudio(temp);
-    }
+    setAudio(new Audio("/assets/lagu.mp3"));
   }, []);
 
   const handleButtonMusic = () => {

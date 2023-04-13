@@ -280,7 +280,7 @@ function Home() {
               </Box>
             </Box>
             <Carosel />
-            <Ucapan />
+            <Ucapan name={name} />
             <Gift />
             <Box
               h="100vh"
